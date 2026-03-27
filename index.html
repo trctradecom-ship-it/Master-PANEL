@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>🚀 TRC Master Admin Panel</title>
+
+<style>
+
+/* ===== BODY ===== */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: white;
+}
+
+/* ===== TOP BAR ===== */
+.topbar {
+    display: flex;
+    gap: 10px;
+    padding: 12px;
+    background: #020617;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* BUTTONS */
+.topbar button {
+    padding: 10px 14px;
+    border: none;
+    border-radius: 8px;
+    background: #1e293b;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.topbar button:hover {
+    background: #22c55e;
+}
+
+/* ACTIVE BUTTON */
+.activeBtn {
+    background: #22c55e !important;
+}
+
+/* ===== IFRAME ===== */
+iframe {
+    width: 100%;
+    height: calc(100vh - 60px);
+    border: none;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+    .topbar {
+        flex-direction: column;
+    }
+
+    iframe {
+        height: calc(100vh - 150px);
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- ===== NAV ===== -->
+<div class="topbar">
+
+<button onclick="loadSite(this, 'https://trctradecom-ship-it.github.io/admin-panelTRC/')">
+ICO Panel
+</button>
+
+<button onclick="loadSite(this, 'https://trctradecom-ship-it.github.io/Admin-DEX-Panel-/')">
+DEX Panel
+</button>
+
+<button onclick="loadSite(this, 'https://trctradecom-ship-it.github.io/Admin-Rewards-panel/')">
+Rewards Panel
+</button>
+
+</div>
+
+<!-- ===== VIEW ===== -->
+<iframe id="viewer" src="https://trctradecom-ship-it.github.io/admin-panelTRC/"></iframe>
+
+<!-- ===== SCRIPT ===== -->
+<script>
+function loadSite(btn, url){
+
+    // change iframe
+    document.getElementById("viewer").src = url;
+
+    // active button highlight
+    document.querySelectorAll(".topbar button").forEach(b=>{
+        b.classList.remove("activeBtn");
+    });
+
+    btn.classList.add("activeBtn");
+}
+</script>
+
+</body>
+</html>
