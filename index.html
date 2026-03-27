@@ -91,18 +91,25 @@ Rewards Panel
 <!-- ===== VIEW ===== -->
 <iframe id="viewer" src="https://trctradecom-ship-it.github.io/admin-panelTRC/"></iframe>
 
+
 <!-- ===== SCRIPT ===== -->
 <script>
 function loadSite(btn, url){
+    // Detect mobile devices
+    const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
-    // change iframe
-    document.getElementById("viewer").src = url;
+    if(isMobile){
+        // On mobile, open the panel in full window so wallet can connect
+        window.location.href = url;
+        return;
+    }
 
-    // active button highlight
-    document.querySelectorAll(".topbar button").forEach(b=>{
-        b.classList.remove("activeBtn");
-    });
+    // On desktop, load the panel inside iframe
+    const iframe = document.getElementById("viewer");
+    if(iframe) iframe.src = url;
 
+    // Highlight the active button
+    document.querySelectorAll(".topbar button").forEach(b => b.classList.remove("activeBtn"));
     btn.classList.add("activeBtn");
 }
 </script>
